@@ -72,6 +72,7 @@
 
 
 import React, { useState } from 'react';
+import style from './App.css';
 
 
 function App() {
@@ -112,20 +113,21 @@ function App() {
 
 
   return (
-    <div>
-        <input type='text' value={task} onChange={handleAddTask}></input>
-        <button onClick={handleSubmit}>Add Task</button>
+    <main className='main'>
+      <h1>To-Do List!</h1>
+        <input className='inputTask' type='text' value={task} onChange={handleAddTask}></input>
+        <button className='addTask' onClick={handleSubmit}>Add Task</button>
         {finishedTask.map((task, index) => (
-          <div key={index}>
-          <ul style={{ textDecoration: task.crossOut ? 'line-through' : 'none' }}>
+          <div className='addedTasks' key={index}>
+          <ul className='tasks' style={{ textDecoration: task.crossOut ? 'line-through'  : 'none' }}>
               {task.text}
             </ul>
-            <button onClick={() => onCrossOutClick(index)}>
+            <button className='crossOutButton' onClick={() => onCrossOutClick(index)}>
               Cross-Out!
             </button>
           </div>
         ))}
-    </div>
+    </main>
   );
 }
 
